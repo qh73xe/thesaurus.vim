@@ -4,8 +4,6 @@
 特定の語の類義語を検索します
 """
 from os import path
-from typing import List
-
 THISDIR = path.dirname(path.abspath(__file__))
 DBFILE = path.abspath(path.join(THISDIR, '..', 'var', 'wnjpn.db'))
 
@@ -20,7 +18,7 @@ class WordNet(object):
         from sqlite3 import connect
         self.con = connect(DBFILE)
 
-    def get_wordid(self, word: str) -> List[int]:
+    def get_wordid(self, word):
         """
         特定の語のワードIDを取得します
         """
@@ -29,7 +27,7 @@ class WordNet(object):
         )
         return [row[0] for row in self.con.execute(sql)]
 
-    def get_synset(self, wordid: int) -> List[str]:
+    def get_synset(self, wordid):
         """
         特定のワードID が属する類似語 ID を取得します
         """
@@ -38,7 +36,7 @@ class WordNet(object):
         )
         return [row[0] for row in self.con.execute(sql)]
 
-    def get_synonym(self, synset: str, lang: str = 'eng') -> List[str]:
+    def get_synonym(self, synset, lang='eng'):
         """
         特定の synset から類義語を取得します
         """
@@ -53,7 +51,7 @@ class WordNet(object):
         )
         return [row[0] for row in self.con.execute(sql)]
 
-    def get_synonym_by_link(self, synset: str, link: str) -> List[str]:
+    def get_synonym_by_link(self, synset, link):
         """
         入力で与えられた synset ID から,
         下位語や下位語を検索します
@@ -75,7 +73,7 @@ class WordNet(object):
         return [row[0] for row in self.con.execute(sql)]
 
 
-def get_synonym(word: str) -> List[str]:
+def get_synonym(word):
     """
     引数 word で指定した語の類義語を検索します
     """
@@ -91,7 +89,7 @@ def get_synonym(word: str) -> List[str]:
     return synonyms
 
 
-def get_synonym_by_link(word: str, link: str) -> List[str]:
+def get_synonym_by_link(word, link):
     """
     引数 word で指定した語の link で指定された関係語を検索します.
     """
@@ -108,7 +106,7 @@ def get_synonym_by_link(word: str, link: str) -> List[str]:
 
 
 # vim 呼出用関数
-def thesaurus_get_synonym(word: str):
+def thesaurus_get_synonym(word):
     synonyms = get_synonym(word)
     for synonym in synonyms:
         print("{0}".format(synonym))

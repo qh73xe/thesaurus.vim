@@ -4,7 +4,7 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-pyfile <sfile>:h:h/src/thesaurus.py
+py3file <sfile>:h:h/src/thesaurus.py
 python3 import vim
 
 function! thesaurus#get_synonym(word)
