@@ -6,6 +6,6 @@ let g:loaded_thesaurus = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
-command! -nargs=1 MyNameIs call thesaurus#get_thesaurus(<f-args>)
+command! -nargs=1 get_synonym call thesaurus#get_synonym(<f-args>)
 let &cpo = s:save_cpo
 unlet s:save_cpo
