@@ -5,10 +5,10 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 pyfile <sfile>:h:h/src/thesaurus.py
-python3 import vim
+python import vim
 
 function! thesaurus#get_synonym((word)
-  python3 thesaurus_get_synonym(vim.eval('a:word'))
+  python thesaurus_get_synonym(vim.eval('a:word'))
 endfunction
 
 let &cpo = s:save_cpo
