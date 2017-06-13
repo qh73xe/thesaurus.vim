@@ -13,7 +13,7 @@ class WordNet(object):
 
     def __init__(self):
         from sqlite3 import connect
-        thisdir = path.dirname(path.abspath(__file__))
+        thisdir = path.dirname(path.abspath('__file__'))
         dbfile = path.abspath(path.join(THISDIR, '..', 'var', 'wnjpn.db'))
         self.con = connect(dbfile)
 
