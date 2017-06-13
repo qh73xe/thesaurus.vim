@@ -4,9 +4,6 @@
 特定の語の類義語を検索します
 """
 from os import path
-THISDIR = path.dirname(path.abspath(__file__))
-DBFILE = path.abspath(path.join(THISDIR, '..', 'var', 'wnjpn.db'))
-
 
 class WordNet(object):
     """
@@ -16,7 +13,9 @@ class WordNet(object):
 
     def __init__(self):
         from sqlite3 import connect
-        self.con = connect(DBFILE)
+        thisdir = path.dirname(path.abspath(__file__))
+        dbfile = path.abspath(path.join(THISDIR, '..', 'var', 'wnjpn.db'))
+        self.con = connect(dbfile)
 
     def get_wordid(self, word):
         """
