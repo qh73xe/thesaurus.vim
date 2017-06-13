@@ -84,7 +84,6 @@ def get_synonym(word):
         for synid in synsetids:
             synonyms.extend(wn.get_synonym(synid))
     synonyms = sorted(list(set(synonyms)))
-    synonyms.pop(synonyms.index(word))
     return synonyms
 
 
