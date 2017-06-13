@@ -7,7 +7,7 @@ set cpo&vim
 pyfile <sfile>:h:h/src/thesaurus.py
 python import vim
 
-function! thesaurus#get_synonym((word)
+function! thesaurus#get_synonym(word)
   python thesaurus_get_synonym(vim.eval('a:word'))
 endfunction
 
